@@ -4,19 +4,26 @@ written in Fortran-90 by: https://github.com/lenafabr and mariohidalgosoria
 these programs simulate the interaction of different cluster size mitochondria moving in dendritic trees.
 They give as an output:
 STC.snap.txt: with the coordinates of all different cluster sizes distributed in the tree
+
 STC.clsnap.txt : with the different cluster sizes at the end of the run     
+
 STC.emsnap.txt: with total mass of mitochondria on each different branch of the dendritic tree
 
 This repository is divided in sub-directories as follows:
 Data: contains examples of data files with the coordinates and cluster size of mitochondria in dendritic trees.
+
 ClusterSizeDist: conatins Matlab programs to compute the final cluster size distribution of mitochondria
 the volume density per branch extracted from simulations an our mean field model. Also includes Matlab
 programs to compute the mitochondrial volume density per mesh site using simulation data and our mean field model.
+
 CanonicalResult: Contains Matlab programs to compute mean field calculations of the total mitochondrial mass in the tree
 and the average cluster size of mitochondria present in the tree.
+
 DistEnrCSR: Contains Matlab programs to compute the distal erichment of mitochondria and the relative cluster size 
 per region, predicted by our mean field model.
+
 DistEnrU: Contains Matlab programs to compute the distal erichment of mitochondria versus the dimensionless parameters of our model
+
 Asymm: Contains Matlab programs to compute the asymmetry of mitochondrial volume prediceted by the mean field model in the 
 dendritic tree, for different scaling rules of branching in dendrites.
 
