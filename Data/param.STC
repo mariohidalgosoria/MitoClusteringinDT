@@ -1,0 +1,155 @@
+# parameter file for particles moving along tree
+# with anterograde particles produced at the root
+# and retrograde particles absorbed at the root
+# including rates for stopping and switching directions
+
+# how often to dump snapshots and in what file 
+SNAPSHOTS 1D2 *.100snap.txt
+# file where cluster sizes are stored 
+CLSNAPSHOTFILE *.100clsnap.txt
+# file where edge density is stored
+MDSNAPSHOTFILE *.100mdsnap.txt
+# file where mass per branch is stored
+EMSNAPSHOTFILE *.100emsnap.txt
+# file where final configuration is stored
+FINALSNAPSHOTFILE *.100fcsnap.txt
+
+ACTION runparticles
+
+# number of particle types we are working with
+NTYPE 1
+# set random number generator by system time and file name (set to -2)
+# or replace with positive number for reproducible results
+RNGSEED -2
+# ------------
+# info on the network domain
+# ------------
+# network structure stored in this file
+NETFILE MCFO_HSE1_ST67_MU.net
+
+# This is a directed tree, with edges pointing downstream
+DIRECTEDTREE
+# dimension of the network
+NETWORKDIM 2
+
+# -------------
+# info on the particles
+# define 3 states: anterograde, retrograde, stopped
+# -------------
+# velocity in mu/s
+VELOCITY 1 0.6D0 -0.6D0 0D0
+
+# rates of transition FROM each state (between stopped and walking)
+#TRANSRATES 1 1 0D0 0D0 0.1D0
+#TRANSRATES 1 2 0D0 0D0 0.1D0
+#TRANSRATES 1 3 1D0 1D0 0D0
+
+#test
+#TRANSRATES 1 1 0D0 0D0 0D0
+#TRANSRATES 1 2 0D0 0D0 0D0
+#TRANSRATES 1 3 0.05D0 0.05D0 0D0
+
+# alternately, allow no state transitions except on reflection
+TRANSRATES 1 1 0D0 0D0 0D0
+TRANSRATES 1 2 0D0 0D0 0D0
+TRANSRATES 1 3 0D0 0D0 0D0
+
+
+# flip motility states when hitting a terminal
+TRANSTERM 1 1 0D0 1D0 0D0
+TRANSTERM 1 2 1D0 0D0 0D0
+
+# absorb retrograde particles when hitting terminal
+ABSORBTERM 1 F T 
+
+# production rate
+# values: particle group, state of newly produced particles, production rate, 
+# then list of nodes where they are produced
+PRODUCTION 1 1 0.3205D0 1
+
+# Maximum allowed number of simultaneous particles
+MAXNPART 1000
+
+# How many initial particles to place
+# this must coincide with the number in INICSNAPSHOTFILE
+NPARTINIT 275
+
+# probability of initializing in each state
+INITSTATE 1 0.5D0 0.5D0 0D0
+
+# where to initialize particles (negative means on all edges)
+INITEDGES -1
+
+# how to initialize particles negative means on all edges uniformly
+# Positive means select starting edge in proportion to its volume
+#UNIFORM -1
+UNIFORM 1
+
+# ------------
+# How to choose where to step at junctions
+# ---------------
+# read in the edge values
+READEDGEVALS
+# Anterograde: split in proportion to edge vals
+SPLITTYPE 1 1 DOWNSTREAM_EDGEVALS
+# Retrograde: all go to upstream trunk
+SPLITTYPE 1 2 UPSTREAM
+
+# ----------------------
+# dynamic run and output parameters
+# -----------------------
+# how many steps to run
+NSTEP 1D5
+
+# timestep size
+DELT 1D-2
+# file where initial configuration is stored
+INICSNAPSHOTFILE *.icsnap.txt
+
+# how often to print output on screen
+PRINTEVERY 1D7
+#how often to print MD data on files
+OUTPUTEVERY 1D7
+
+#--------------------
+# Fission rate and exponent
+#--------------------
+FISSION 1 0.0115D0 0D0
+
+#--------------------
+# Fusion prob and exponent
+# note that edgevals is r^2 and edgevals gets taken to this exponent
+#--------------------
+FUSION 1 0.0772D0 1.05D0
+# no tip-side fusion
+DOTIPSIDEFUSION 1 F
+
+
+#--------------------
+# Unit length for a particle 
+#--------------------
+#LUNIT 1 3.3D0   
+# in um
+#LUNIT 1 1D0 
+LUNIT 1 0.5D0
+#--------------------
+# check connectivity of edge segments
+#--------------------
+CHECKVALIDITY F
+#CHECKVALIDITY T
+
+#--------------------
+# for propagation of signals:
+# a negative number implies no injection of signals
+# a positive number implies injection of signals at a specific node
+# release time step
+# node  where the signals are injected
+#--------------------
+#MIXING -1 1D2 14
+
+#--------------------
+# start with initial configuration from external file
+#--------------------
+INITIALCONDITION F
+#INITIALCONDITION T
+
