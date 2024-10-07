@@ -11,6 +11,7 @@ STC.clsnap.txt : with the different cluster sizes at the end of the run
 STC.emsnap.txt: with total mass of mitochondria on each different branch of the dendritic tree
 
 This repository is divided in sub-directories as follows:
+
 Data: contains examples of data files with the coordinates and cluster size of mitochondria in dendritic trees.
 
 ClusterSizeDist: conatins Matlab programs to compute the final cluster size distribution of mitochondria
