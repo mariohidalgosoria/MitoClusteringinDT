@@ -49,6 +49,8 @@ save("../results/NO_FUS_B/SubTreeCV13/STCSIMCLSDG15.dat","MP","-ascii")
 %save("../results/NO_FUS_B/SubTreeCV14/STCSIMCLSDG19.dat","MP","-ascii")
 %% mean field 
 
+
+%%%%%%%%%%%%functions taken from lenafabr%%%%%%%%%%%%%%%%%%%%%%%%
 addpath('../../networktools/')
 addpath('../../dendriticmito/dendriticTrees_public/')%% load in realistic tree structure
 % TODO: check input data
@@ -115,7 +117,6 @@ totmass = sum(expectedgemass)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fig 2b vol density per branch
-%%%%%%%%%%%%%LENA
 %% load in many runs and get average density on each edge
 figure
 clear
@@ -178,16 +179,8 @@ Au = 0.0539;
 %kp = 0.3205;
 %Au = 0.0672;
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%old
-%rhoWtrunk1 = 2*kp/v;
-%[rhoWvals] = setMotileMitoConcFromRadii(NT,trunkedge,rhoWtrunk1,radii);
-%alpj = v*Au./(2*kb*radii.^gamma);
-%[M0vals, M1vals] = getMitoClusterDensity(rhoWvals,alpj);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%LENA
 unitlen = 0.5;
 mitovol=0.5;
 
@@ -216,9 +209,10 @@ expectedgemass = M1vals.*(NT.edgelens');
 totmass = sum(expectedgemass)
 
 %% adjusted motile density
+%% find corrections in motile density to avoid finite lenght effects
 % coefficients for 4th order polynomial, strting with highest order term
 a0 = v*Au./(2*kb*radii(trunkedge).^gamma);
-%LENA
+
 %polycoeff = [unitlen*a0^3/2, 0, a0*unitlen/2 - a0*v/2/kb, a0*kp/kb + v/2/kb,-kp/kb];
 polycoeff = [a0*kb*unitlen - v*a0/2, a0*kp + v/2, - kp]
 rho1mtrunk = roots(polycoeff);
@@ -248,7 +242,6 @@ expectnclust = totmass/avgclustsize;
 expectedgemass = M1vals.*(NT.edgelens');
 totmass = sum(expectedgemass)
 
-%%LENA
 
 
 modeldensity = ((M1vals*0.5)./(pi*radii.^2))';
@@ -366,7 +359,7 @@ totmass = sum(M1vals.*(NT.edgelens'))
 getTreeAvgClusterSize(NT,rhoWvals*2*kp/v,alpj)
 %%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%LENA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 unitlen = 0.5;
 mitovol=0.5;
 
