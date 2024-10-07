@@ -1,0 +1,24 @@
+#GNU script to create fig 4b
+reset session
+unset errorbars
+set style line 1 linecolor rgb 'blue' linetype 2 linewidth 3 pointtype 7 pointsize 2.4
+set style line 2 linecolor rgb 'plum' linetype 2 linewidth 3 pointtype 7 pointsize 1.8
+set style line 3 linecolor rgb 'sea-green' linetype 2 linewidth 3 pointtype 7 pointsize 1.8
+set style line 4 linecolor rgb 'pink' linetype 2 linewidth 3 pointtype 7 pointsize 2.4
+set style line 5 linecolor rgb 'black' linetype 2 linewidth 3 pointtype 7 pointsize 2.4
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 a}{/Normal=24 )}'
+#set label at graph 0.1, graph 0.75 myLabel
+set xlabel '{/Symbol g}' font "Times-Roman,25" offset 0,1.5,0
+set ylabel 'Distal Enrichment, <i>_{D}/<i>_{P}' font "Times-Roman,25" offset 0,0,0
+set key left  font ",20"
+#set format y "10^{%L}"
+set xtics 0.5  font ", 20"
+set ytics 2  font ", 20"
+set xrange[0:2.5]
+#set yrange[0:13]
+#set logscale y 10
+set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
+plot 'GEXNDEGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'pink' notitle,'' using 1:2  w l ls 2   title "Distal Enrichment"
+replot 'GEXNRCSGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'light-green' notitle,'' using 1:2  w l ls 3   title "Cluster Size Ratio"
+replot 'intX.txt' w p ls 5 notitle
