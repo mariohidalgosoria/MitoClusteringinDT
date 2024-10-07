@@ -1,3 +1,4 @@
+/*Computes the Cluster Size Ratio per region verus the fusion exponent*/
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
