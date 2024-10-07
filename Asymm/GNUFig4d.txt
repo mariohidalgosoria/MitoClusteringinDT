@@ -1,0 +1,33 @@
+#GNU script for plotting the asymmetry versus the fusion exponent
+reset session
+unset errorbars
+set style line 1 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 2 linecolor rgb 'plum' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 3 linecolor rgb 'dark-pink' linetype 2 linewidth 1 pointtype 7 pointsize 1.5
+set style line 4 linecolor rgb 'pink' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 5 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 6 linecolor rgb 'green' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 7 linecolor rgb 'blue' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 8 linecolor rgb 'orchid' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 9 linecolor rgb 'turquoise' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 10 linecolor rgb 'forest-green' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 11 linecolor rgb 'gold' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style line 12 linecolor rgb 'black' linetype 2 linewidth 3 pointtype 7 pointsize 1.5
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 c}{/Normal=24 )}'
+#set label at graph 0.05, graph 0.75 myLabel
+set xlabel '{/Symbol g}' font "Times-Roman,25" offset 0,2,0
+set ylabel '{/Symbol z}' font "Times-Roman,25" offset 0,3,0
+set xrange[0:3.2]
+set yrange[-0.05:0.6]
+#set label 'a)' at 1.2,0.4 font ", 20"
+set key left  font ",20"
+set xtics 1 font ", 20"
+set ytics 0.2 font ", 20"
+f(x)=0.5054
+set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
+plot 'GEXALP2ASYGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'light-pink' notitle,'' using 1:2  w l ls 8 t 'HS; Balanced Trees'
+replot 'GEXEQALP2ASYGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'seagreen' notitle,'' using 1:2  w l ls 10 t '{/Symbol a}=2; Equal'
+replot 'GEXALP32ASYGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'light-turquoise' notitle,'' using 1:2  w l ls 9 t '{/Symbol a}=3/2; L/D_{0}'
+replot 'GEXALP3ASYGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'sienna1' notitle,'' using 1:2  w l ls 5 t '{/Symbol a}=3; L/D_{0}'
+replot 'GEXBMINASYGE.dat' using 1:($2+$3):($2-$3) with filledcurve fc rgb 'lemonchiffon' notitle,'' using 1:2  w l ls 11 t 'r_{min}=0.1{/Symbol m}m'
