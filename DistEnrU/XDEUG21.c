@@ -1,3 +1,4 @@
+/*Computes the ensemble average of the distal enrichment versus ukp */
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
