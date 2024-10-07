@@ -14,7 +14,7 @@ This repository is divided in sub-directories as follows:
 
 Data: contains examples of data files with the coordinates and cluster sizes of mitochondria in dendritic trees.
 
-ClusterSizeDist: conatins Matlab programs to compute the final cluster size distribution of mitochondria
+ClusterSizeDist: conatins Matlab programs to compute the final cluster size distribution of mitochondria, 
 the volume density per branch extracted from simulations an our mean field model. Also includes Matlab
 programs to compute the mitochondrial volume density per mesh site using simulation data and our mean field model.
 
