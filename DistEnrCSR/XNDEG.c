@@ -1,3 +1,4 @@
+/*Computes de ensemble average of the Distal Enrichment versus the fusion exponent*/
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
