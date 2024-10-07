@@ -1,0 +1,54 @@
+#GNU scripts for Fig 2 
+#fig 2 a
+#gamma=2.1
+#<i>=2
+#LU=0.5
+reset session
+#set multiplot layout 1,2
+set size square
+set style line 1 linecolor rgb 'blue' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 2 linecolor rgb 'dark-violet' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 3 linecolor rgb 'dark-cyan' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 4 linecolor rgb 'green' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 5 linecolor rgb 'orange' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 6 linecolor rgb 'magenta' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set style line 7 linecolor rgb 'red' linetype 1 linewidth 2 pointtype 7 pointsize 2.0
+set log xy 
+set format y "10^{%L}"
+set format x "10^{%L}"
+#myLabel = '{/"cmmi10":Normal=34 c}{/Normal=24 )}'
+#set label at graph 0.75, graph 0.2 myLabel
+set yrange[0.000001:10]
+set xrange[0.1:100]
+set xlabel 'Cluster size i' font "Times-Roman,20" offset 0,0,0
+set ylabel '{/Symbol r}_{i,ST}' font "Times-Roman,20" offset 0,4,0
+set key left bottom font ",20"
+set xtics  font ", 15"
+set ytics   font ", 15"
+plot 'STCSIMCLSDG21.dat' u 1:2 w p ls 3 notitle, 'STCG21PRXLIFEV11.dat' w l lw 3 lc rgb 'cyan' t '{/Symbol g}=2.1
+replot 'STCSIMCLSDG15.dat' u 1:2 w p ls 6 notitle, 'STCG15PRXLIFEV13.dat' w l lw 3 lc rgb 'magenta' t '{/Symbol g}=1.5'
+
+
+
+
+
+#fig 2 b
+reset session
+set style line 1 linecolor rgb 'dark-violet' linetype 2 linewidth 1 pointtype 9 pointsize 2.4
+set style line 2 linecolor rgb 'dark-cyan' linetype 2 linewidth 1 pointtype 9 pointsize 2.4
+set style line 3 linecolor rgb 'magenta' linetype 2 linewidth 1 pointtype 9 pointsize 2.4
+set style line 4 linecolor rgb 'pink' linetype 2 linewidth 1 pointtype 9 pointsize 2.4
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 d}{/Normal=24 )}'
+#set label at graph 0.1, graph 0.75 myLabel
+set xlabel 'c_{j}  Mean Field' font "Times-Roman,20" offset 0,0,0
+set ylabel 'c_{j}  Simulations' font "Times-Roman,20" offset 0,0,0
+set xrange[0.05:0.35]
+set yrange[0.05:0.35]
+set key bottom  font ",20"
+set xtics 0.1  font ", 15"
+set ytics 0.1  font ", 15"
+f(x)=x
+plot 'LLVDMFMG21.dat'  u 1:2  w p ls 2 t '{/Symbol g}=2.1', 'LLVDMFMG15.dat'  u 1:2  w p ls 3 t '{/Symbol g}=1.5'
+replot f(x) w d lw 2  lc rgb 'gray0' notitle
+
