@@ -1,0 +1,110 @@
+#GNU script for Fig 3
+# Fig 3 b
+reset session
+set style line 1 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 0 pointsize 1.0
+set style line 2 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 3 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 8 pointsize 0.1
+set style line 4 linecolor rgb 'cyan' linetype 2 linewidth 3 pointtype 4 pointsize 0.5
+set style line 5 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 6 linecolor rgb 'green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 7 linecolor rgb 'blue' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 8 linecolor rgb 'magenta' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 9 linecolor rgb 'turquoise' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 10 linecolor rgb 'forest-green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 11 linecolor rgb 'gold' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 12 linecolor rgb 'black' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 a}{/Normal=24 )}'
+#set label at graph 0.9, graph 0.7 myLabel
+set xlabel 'uk_{p}' font "Times-Roman,25" offset 0,0,0
+set ylabel 'M_{T}/k_{p}' font "Times-Roman,25" offset 0,0,0
+set xrange[:1]
+set yrange[:1500]
+set logscale y 10
+set format y "10^{%L}"
+#set format x "10^{%L}"
+set key left font ",15"
+set xtics 0.2  font ", 20"
+set ytics  font ", 20"
+set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
+plot 'LMKTU.dat'  u 1:2 w l lc rgb 'black' lw 12   title "Canonical Result"
+replot 'G0MTUT9.dat' w l ls 1 t 'Balanced Trees; {/Symbol g}=0'
+replot 'G2MTUT9.dat' w l ls 1 t '{/Symbol g}=2'
+replot 'G3MTUT9.dat' w l ls 1 t '{/Symbol g}=3'
+replot 'ALP15G2MTUT9.dat' w l ls 4 t '{/Symbol a}=3/2; {/Symbol g}=2'
+replot 'ALP3G2MTUT9.dat' w l ls 5 t '{/Symbol a}=3; {/Symbol g}=2'
+replot 'RMG2MTUT9.dat' w l ls 11 t 'r_{min}=0.1{/Symbol m}m; {/Symbol g}=2'
+
+
+% Fig 3 c
+reset session
+set style line 1 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 0 pointsize 1.0
+set style line 2 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 3 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 8 pointsize 0.1
+set style line 4 linecolor rgb 'cyan' linetype 2 linewidth 3 pointtype 4 pointsize 0.5
+set style line 5 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 6 linecolor rgb 'green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 7 linecolor rgb 'blue' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 8 linecolor rgb 'magenta' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 9 linecolor rgb 'turquoise' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 10 linecolor rgb 'forest-green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 11 linecolor rgb 'gold' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 12 linecolor rgb 'black' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 b}{/Normal=24 )}'
+#set label at graph 0.9, graph 0.7 myLabel
+set xlabel 'uk_{p}' font "Times-Roman,25" offset 0,0,0
+set ylabel '<i>_{T}' font "Times-Roman,25" offset 1,0,0
+set xrange[:1]
+set yrange[:20]
+set logscale y 10
+set format y "10^{%L}"
+#set format x "10^{%L}"
+set key left font ",15"
+set xtics 0.2  font ", 20"
+set ytics  font ", 20"
+set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
+plot 'LATU.dat'  u 1:2 w l lc rgb 'black' lw 12   title "Canonical Result"
+replot 'G0ATUT9.dat' w l ls 1 t 'Balanced Trees; {/Symbol g}=0'
+replot 'G2ATUT9.dat' w l ls 1 t '{/Symbol g}=2'
+replot 'G3ATUT9.dat' w l ls 1 t '{/Symbol g}=3'
+replot 'ALP15G2ATUT9.dat' w l ls 4 t '{/Symbol a}=3/2; {/Symbol g}=2'
+replot 'ALP3G2ATUT9.dat' w l ls 5 t '{/Symbol a}=3; {/Symbol g}=2'
+replot 'RMG2ATUT9.dat' w l ls 11 t 'r_{min}=0.1{/Symbol m}m; {/Symbol g}=2'
+
+
+% Fig 3 d
+reset session
+set style line 1 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 0 pointsize 1.0
+set style line 2 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 3 linecolor rgb 'dark-violet' linetype 2 linewidth 3 pointtype 8 pointsize 0.1
+set style line 4 linecolor rgb 'cyan' linetype 2 linewidth 3 pointtype 4 pointsize 0.5
+set style line 5 linecolor rgb 'red' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 6 linecolor rgb 'green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 7 linecolor rgb 'blue' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 8 linecolor rgb 'magenta' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 9 linecolor rgb 'turquoise' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 10 linecolor rgb 'forest-green' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 11 linecolor rgb 'gold' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style line 12 linecolor rgb 'black' linetype 2 linewidth 3 pointtype 7 pointsize 0.8
+set style fill solid border -1
+#myLabel = '{/"cmmi10":Normal=34 c}{/Normal=24 )}'
+#set label at graph 0.05, graph 0.3 myLabel
+set xlabel 'M_{T}/k_{p}' font "Times-Roman,25" offset 0,1,0
+set ylabel '<i>_{T}' font "Times-Roman,25" offset 1,0,0
+set xrange[1:1000]
+set yrange[1:1000]
+set logscale xy 10
+set format y "10^{%L}"
+set format x "10^{%L}"
+set key left font ",15"
+set xtics   font ", 20"
+set ytics font ", 20"
+set colorbox vertical origin screen 0.9, 0.2 size screen 0.05, 0.6 front  noinvert bdefault
+plot 'LAMKTU.dat'  u 1:2 w l lc rgb 'black' lw 12   title "Canonical Result"
+replot 'G0AMTUT9.dat' w l ls 1 t 'Balanced Trees; {/Symbol g}=0'
+replot 'G2AMTUT9.dat' w l ls 1 t '{/Symbol g}=2'
+replot 'G3AMTUT9.dat' w l ls 1 t '{/Symbol g}=3'
+replot 'ALP15G2AMTUT9.dat' w l ls 4 t '{/Symbol a}=3/2; {/Symbol g}=2'
+replot 'ALP3G2AMTUT9.dat' w l ls 5 t '{/Symbol a}=3; {/Symbol g}=2'
+replot 'RMG2AMTUT9.dat' w l ls 11 t 'r_{min}=0.1{/Symbol m}m; {/Symbol g}=2'
