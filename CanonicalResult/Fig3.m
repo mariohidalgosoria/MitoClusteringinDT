@@ -3,6 +3,7 @@
 % load code dependencies as needed
 clear
 hold off
+%%%%%%%%%%%%functions taken from lenafabr%%%%%%%%%%%%%%%%%%%%%%%%
 addpath('../../networktools/')
 addpath('../../dendriticmito/dendriticTrees_public/')
 %% load in all dendritic tree networks
