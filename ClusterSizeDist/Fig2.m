@@ -113,6 +113,7 @@ expectnclust = totmass/avgclustsize;
 expectedgemass = M1vals.*(NT.edgelens');
 totmass = sum(expectedgemass)
 
+% mean field cluster size distribution
 [ivals, dcs] = getClusterSizeDist2(NT,rhoWvals,alpj,MM)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
