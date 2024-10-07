@@ -176,4 +176,39 @@ DEGG=[gammalist' stDE'];
 save("../results/MeanFieldPlots/XNRCSGT10.dat","RCSGG","-ascii")
 save("../results/MeanFieldPlots/XNDEGT10.dat","DEGG","-ascii")
 
+%Matlab script for obtaining errors
+
+clear
+hold off
+ND=40;
+ASY=cell(1,ND);
+Nexp=10;
+for i=1:Nexp %files obtained from RCSDEG.m
+  name=sprintf('../results/MeanFieldPlots/XNRCSGT%d.dat',i);
+  %name=sprintf('../results/MeanFieldPlots/XNDEGT%d.dat',i);
+  data=load(name);
+  g=data(:,1);
+  for j=1:ND
+         ASY{1,j}=[ASY{1,j} ; data(j,2)];
+  end  
+end
+
+stda=zeros(ND,1);
+for j=1:ND
+      B=ASY{j}(~isnan(ASY{j}));
+      C=B(~isinf(B));
+      stda(j)=std(C);
+      %stda(j)=std(ASY{j});
+end
+
+
+%ensemble averages obtained from XNRCSG.c and XNDEG.c
+meand=load('../results/MeanFieldPlots/EXNRCSG.dat'); 
+%meand=load('../results/MeanFieldPlots/EXNDEG.dat');
+
+M=meand(:,2);
+errorbar(g,M,stda,'b')
+GME=[g M stda];
+save("../results/MeanFieldPlots/GEXNRCSGE.dat","GME","-ascii")
+%save("../results/MeanFieldPlots/GEXNDEGE.dat","GME","-ascii")
 
